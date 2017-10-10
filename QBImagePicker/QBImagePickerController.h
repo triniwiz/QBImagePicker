@@ -49,7 +49,6 @@ typedef NS_ENUM(NSUInteger, QBImagePickerMediaType) {
 @property (nonatomic, assign) NSUInteger numberOfColumnsInPortrait;
 @property (nonatomic, assign) NSUInteger numberOfColumnsInLandscape;
 
-@property (nonatomic, assign) UIColor *navigationBarBackgroundTintColor;
-@property (nonatomic, assign) UIColor *navigationBarTintColor;
+@property (nonatomic, strong) UINavigationController *albumsNavigationController;
 
 @end

@@ -67,6 +67,8 @@
     [self addChildViewController:navigationController];
     
     navigationController.view.frame = self.view.bounds;
+	navigationController.navigationBar.barTintColor = self.navigationBarBackgroundTintColor;
+	navigationController.navigationBar.tintColor = self.navigationBarTintColor;
     [self.view addSubview:navigationController.view];
     
     [navigationController didMoveToParentViewController:self];

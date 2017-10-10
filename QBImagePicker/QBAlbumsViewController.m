@@ -49,7 +49,10 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     self.fetchResults = @[smartAlbums, userAlbums];
     
     [self updateAssetCollections];
-    
+
+	self.navigationController.navigationBar.barTintColor = self.imagePickerController.navigationBarBackgroundTintColor;
+	self.navigationController.navigationBar.tintColor = self.imagePickerController.navigationBarTintColor;
+
     // Register observer
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 }

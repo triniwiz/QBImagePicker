@@ -9,6 +9,6 @@
 #ifndef QBConstants_h
 #define QBConstants_h
 
-#define kDisabledColor [colorWithRed:(195/255.0) green:(195/255.0) blue:(195/255.0) alpha:1.0]
+#define kDisabledColor [UIColor colorWithRed:(195/255.0) green:(195/255.0) blue:(195/255.0) alpha:1.0]
 
 #endif /* QBConstants_h */

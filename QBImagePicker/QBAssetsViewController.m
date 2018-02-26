@@ -8,6 +8,7 @@
 
 #import "QBAssetsViewController.h"
 #import <Photos/Photos.h>
+#import "QBConstants.h"
 
 // Views
 #import "QBImagePickerController.h"
@@ -79,6 +80,8 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     
     // Register observer
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+
+	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 }
 
 - (void)viewWillAppear:(BOOL)animated

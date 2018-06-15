@@ -300,6 +300,9 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     
     PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
     PHImageManager *imageManager = [PHImageManager defaultManager];
+
+	PHImageRequestOptions *requestOptions = [PHImageRequestOptions init];
+	requestOptions.networkAccessAllowed = true;
     
     if (fetchResult.count >= 3) {
         cell.imageView3.hidden = NO;
@@ -307,7 +310,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         [imageManager requestImageForAsset:fetchResult[fetchResult.count - 3]
                                 targetSize:CGSizeScale(cell.imageView3.frame.size, [[UIScreen mainScreen] scale])
                                contentMode:PHImageContentModeAspectFill
-                                   options:nil
+                                   options:requestOptions
                              resultHandler:^(UIImage *result, NSDictionary *info) {
                                  if (cell.tag == indexPath.row) {
                                      cell.imageView3.image = result;
@@ -323,7 +326,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         [imageManager requestImageForAsset:fetchResult[fetchResult.count - 2]
                                 targetSize:CGSizeScale(cell.imageView2.frame.size, [[UIScreen mainScreen] scale])
                                contentMode:PHImageContentModeAspectFill
-                                   options:nil
+                                   options:requestOptions
                              resultHandler:^(UIImage *result, NSDictionary *info) {
                                  if (cell.tag == indexPath.row) {
                                      cell.imageView2.image = result;
@@ -337,7 +340,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         [imageManager requestImageForAsset:fetchResult[fetchResult.count - 1]
                                 targetSize:CGSizeScale(cell.imageView1.frame.size, [[UIScreen mainScreen] scale])
                                contentMode:PHImageContentModeAspectFill
-                                   options:nil
+                                   options:requestOptions
                              resultHandler:^(UIImage *result, NSDictionary *info) {
                                  if (cell.tag == indexPath.row) {
                                      cell.imageView1.image = result;

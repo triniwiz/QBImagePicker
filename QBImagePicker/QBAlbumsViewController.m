@@ -301,7 +301,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
     PHImageManager *imageManager = [PHImageManager defaultManager];
 
-	PHImageRequestOptions *requestOptions = [PHImageRequestOptions init];
+	PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
 	requestOptions.networkAccessAllowed = true;
     
     if (fetchResult.count >= 3) {

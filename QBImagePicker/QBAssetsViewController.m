@@ -455,7 +455,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     CGSize itemSize = [(UICollectionViewFlowLayout *)collectionView.collectionViewLayout itemSize];
     CGSize targetSize = CGSizeScale(itemSize, [[UIScreen mainScreen] scale]);
 
-	PHImageRequestOptions *requestOptions = [PHImageRequestOptions init];
+	PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
 	requestOptions.networkAccessAllowed = true;
 
     [self.imageManager requestImageForAsset:asset

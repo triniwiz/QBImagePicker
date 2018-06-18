@@ -37,6 +37,7 @@ typedef NS_ENUM(NSUInteger, QBImagePickerMediaType) {
 
 @property (nonatomic, copy) NSArray *assetCollectionSubtypes;
 @property (nonatomic, assign) QBImagePickerMediaType mediaType;
+@property (nonatomic, assign) BOOL sortMediaByCreationDateAscending;
 
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
 @property (nonatomic, assign) NSUInteger minimumNumberOfSelection;
@@ -47,5 +48,7 @@ typedef NS_ENUM(NSUInteger, QBImagePickerMediaType) {
 
 @property (nonatomic, assign) NSUInteger numberOfColumnsInPortrait;
 @property (nonatomic, assign) NSUInteger numberOfColumnsInLandscape;
+
+@property (nonatomic, strong) UINavigationController *albumsNavigationController;
 
 @end

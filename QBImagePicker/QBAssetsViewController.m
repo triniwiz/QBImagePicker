@@ -669,7 +669,13 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     }
     
     CGFloat width = (CGRectGetWidth(self.view.frame) - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
-    
+
+    // Fatal Exception: NSInternalInconsistencyException negative sizes are not supported in the flow layout
+    // The width and height of the specified item. Both values must be greater than 0.
+    if (width <= 0) {
+        width = 1.0f;
+    }
+
     return CGSizeMake(width, width);
 }
 

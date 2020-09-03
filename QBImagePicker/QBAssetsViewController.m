@@ -521,8 +521,9 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         switch (self.imagePickerController.mediaType) {
             case QBImagePickerMediaTypeAny:
             {
-                NSString *format;
-                if (numberOfPhotos == 1) {
+                NSString *format = NSLocalizedStringFromTableInBundle(@"assets.footer.photos-and-videos", @"QBImagePicker", bundle, nil);
+
+				if (numberOfPhotos == 1) {
                     if (numberOfVideos == 1) {
                         format = NSLocalizedStringFromTableInBundle(@"assets.footer.photo-and-video", @"QBImagePicker", bundle, nil);
                     } else {
@@ -530,11 +531,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
                     }
                 } else if (numberOfVideos == 1) {
                     format = NSLocalizedStringFromTableInBundle(@"assets.footer.photos-and-video", @"QBImagePicker", bundle, nil);
-                } else {
-                    format = NSLocalizedStringFromTableInBundle(@"assets.footer.photos-and-videos", @"QBImagePicker", bundle, nil);
                 }
-                
-                label.text = [NSString stringWithFormat:format, numberOfPhotos, numberOfVideos];
+
+				if (format != nil) {
+					label.text = [NSString stringWithFormat:format, numberOfPhotos, numberOfVideos];
+				}
             }
                 break;
                 

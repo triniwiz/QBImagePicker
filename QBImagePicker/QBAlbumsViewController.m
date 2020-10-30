@@ -55,6 +55,17 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 
 	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
+
+	if (@available(iOS 13.0, *)) {
+
+		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
+			[self.view setBackgroundColor: kDarkBackground];
+			[self.tableView setBackgroundColor: kDarkBackground];
+		} else  {
+			[self.view setBackgroundColor: kLightBackground];
+			[self.tableView setBackgroundColor: kLightBackground];
+		}
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated

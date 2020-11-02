@@ -87,10 +87,10 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 
 		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
 			[self.view setBackgroundColor: kDarkBackground];
-			[self.collectionView setBackgroundColor: kDarkBackground];
+			self.collectionView.backgroundColor = kDarkBackground;
 		} else  {
 			[self.view setBackgroundColor: kLightBackground];
-			[self.collectionView setBackgroundColor: kLightBackground];
+			self.collectionView.backgroundColor = kLightBackground;
 		}
 	}
 }

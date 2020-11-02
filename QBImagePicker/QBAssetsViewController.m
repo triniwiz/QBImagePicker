@@ -82,17 +82,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 
 	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
-
-	if (@available(iOS 13.0, *)) {
-
-		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-			[self.view setBackgroundColor: kDarkBackground];
-			self.collectionView.backgroundColor = kDarkBackground;
-		} else  {
-			[self.view setBackgroundColor: kLightBackground];
-			self.collectionView.backgroundColor = kLightBackground;
-		}
-	}
+	[self resetColours];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -126,6 +116,24 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
             [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
         });
     }
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection  {
+	[super traitCollectionDidChange:previousTraitCollection];
+	[self resetColours];
+}
+
+- (void)resetColours {
+	if (@available(iOS 13.0, *)) {
+
+		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
+			[self.view setBackgroundColor: kDarkBackground];
+			self.collectionView.backgroundColor = kDarkBackground;
+		} else  {
+			[self.view setBackgroundColor: kLightBackground];
+			self.collectionView.backgroundColor = kLightBackground;
+		}
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated

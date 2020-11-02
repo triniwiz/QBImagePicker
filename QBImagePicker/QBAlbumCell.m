@@ -18,11 +18,11 @@
 
 		// Use opposite color for text
 		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-			[self.titleLabel setBackgroundColor: kDarkBackground];
-			[self.countLabel setBackgroundColor: kDarkBackground];
+			[self.titleLabel setTextColor: kLightBackground];
+			[self.countLabel setTextColor: kLightBackground];
 		} else  {
-			[self.titleLabel setBackgroundColor: kLightBackground];
-			[self.countLabel setBackgroundColor: kLightBackground];
+			[self.titleLabel setTextColor: kDarkBackground];
+			[self.countLabel setTextColor: kDarkBackground];
 		}
 	}
 }

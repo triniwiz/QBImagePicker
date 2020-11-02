@@ -524,6 +524,16 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         
         // Number of assets
         UILabel *label = (UILabel *)[footerView viewWithTag:1];
+
+		if (@available(iOS 13.0, *)) {
+
+			// Use oposite text color
+			if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
+				[label setTextColor:kLightBackground];
+			} else  {
+				[label setTextColor:kDarkBackground];
+			}
+		}
         
         NSBundle *bundle = self.imagePickerController.assetBundle;
         NSUInteger numberOfPhotos = [self.fetchResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];

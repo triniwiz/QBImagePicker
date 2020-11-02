@@ -6,9 +6,26 @@
 //  Copyright (c) 2015 Katsuma Tanaka. All rights reserved.
 //
 
+#import "QBConstants.h"
 #import "QBAlbumCell.h"
 
 @implementation QBAlbumCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	if (@available(iOS 13.0, *)) {
+
+		// Use opposite color for text
+		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
+			[self.titleLabel setBackgroundColor: kDarkBackground];
+			[self.countLabel setBackgroundColor: kDarkBackground];
+		} else  {
+			[self.titleLabel setBackgroundColor: kLightBackground];
+			[self.countLabel setBackgroundColor: kLightBackground];
+		}
+	}
+}
 
 - (void)setBorderWidth:(CGFloat)borderWidth
 {

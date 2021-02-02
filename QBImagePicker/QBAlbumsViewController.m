@@ -94,9 +94,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
 			[self.view setBackgroundColor: kDarkBackground];
 			[self.tableView setBackgroundColor: kDarkBackground];
+			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateNormal];
 		} else  {
 			[self.view setBackgroundColor: kLightBackground];
 			[self.tableView setBackgroundColor: kLightBackground];
+			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateNormal];
 		}
 	}
 }

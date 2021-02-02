@@ -129,9 +129,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
 			[self.view setBackgroundColor: kDarkBackground];
 			self.collectionView.backgroundColor = kDarkBackground;
+			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
 		} else  {
 			[self.view setBackgroundColor: kLightBackground];
 			self.collectionView.backgroundColor = kLightBackground;
+			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
 		}
 	}
 }
@@ -171,7 +173,6 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     // Deregister observer
     [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
 }
-
 
 #pragma mark - Accessors
 
@@ -219,13 +220,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
     
     // Info label
-    NSDictionary *attributes = @{ NSForegroundColorAttributeName: [UIColor blackColor] };
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:NULL];
     infoButtonItem.enabled = NO;
-    [infoButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    [infoButtonItem setTitleTextAttributes:attributes forState:UIControlStateDisabled];
     
     self.toolbarItems = @[leftSpace, infoButtonItem, rightSpace];
+	[self resetColours];
 }
 
 - (void)updateSelectionInfo

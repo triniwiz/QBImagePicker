@@ -81,7 +81,6 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     // Register observer
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 
-	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 	[self resetColours];
 }
 
@@ -124,13 +123,16 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 }
 
 - (void)resetColours {
+
 	if (@available(iOS 13.0, *)) {
 
 		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
+			[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
 			[self.view setBackgroundColor: kDarkBackground];
 			self.collectionView.backgroundColor = kDarkBackground;
 			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
 		} else  {
+			[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 			[self.view setBackgroundColor: kLightBackground];
 			self.collectionView.backgroundColor = kLightBackground;
 			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];

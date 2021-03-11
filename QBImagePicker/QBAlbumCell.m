@@ -35,16 +35,19 @@
 }
 
 - (void)resetColours {
-	if (@available(iOS 13.0, *)) {
 
-		// Use opposite color for text
-		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-			[self.titleLabel setTextColor: kLightBackground];
-			[self.countLabel setTextColor: kLightBackground];
-		} else  {
-			[self.titleLabel setTextColor: kDarkBackground];
-			[self.countLabel setTextColor: kDarkBackground];
-		}
+	BOOL useDarkMode = NO;
+	if (@available(iOS 13.0, *)) {
+		useDarkMode = ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark);
+	}
+
+	// Use opposite color for text
+	if (useDarkMode == YES) {
+		[self.titleLabel setTextColor: kLightBackground];
+		[self.countLabel setTextColor: kLightBackground];
+	} else  {
+		[self.titleLabel setTextColor: kDarkBackground];
+		[self.countLabel setTextColor: kDarkBackground];
 	}
 }
 

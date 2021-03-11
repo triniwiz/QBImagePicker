@@ -54,7 +54,6 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     // Register observer
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 
-	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 	[self resetColours];
 }
 
@@ -89,20 +88,24 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 }
 
 - (void)resetColours {
-	if (@available(iOS 13.0, *)) {
 
-		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-			[self.view setBackgroundColor: kDarkBackground];
-			[self.tableView setBackgroundColor: kDarkBackground];
-			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
-		} else  {
-			[self.view setBackgroundColor: kLightBackground];
-			[self.tableView setBackgroundColor: kLightBackground];
-			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
-		}
+	BOOL useDarkMode = NO;
+	if (@available(iOS 13.0, *)) {
+		useDarkMode = ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark);
+	}
+
+	if (useDarkMode == YES) {
+		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
+		[self.view setBackgroundColor: kDarkBackground];
+		[self.tableView setBackgroundColor: kDarkBackground];
+		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
+	} else  {
+		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
+		[self.view setBackgroundColor: kLightBackground];
+		[self.tableView setBackgroundColor: kLightBackground];
+		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
 	}
 }
-
 
 #pragma mark - Storyboard
 

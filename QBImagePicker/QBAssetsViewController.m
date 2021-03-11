@@ -81,7 +81,6 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     // Register observer
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 
-	[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 	[self resetColours];
 }
 
@@ -124,17 +123,22 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 }
 
 - (void)resetColours {
-	if (@available(iOS 13.0, *)) {
 
-		if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-			[self.view setBackgroundColor: kDarkBackground];
-			self.collectionView.backgroundColor = kDarkBackground;
-			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
-		} else  {
-			[self.view setBackgroundColor: kLightBackground];
-			self.collectionView.backgroundColor = kLightBackground;
-			[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
-		}
+	BOOL useDarkMode = NO;
+	if (@available(iOS 13.0, *)) {
+		useDarkMode = ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark);
+	}
+
+	if (useDarkMode == YES) {
+		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
+		[self.view setBackgroundColor: kDarkBackground];
+		self.collectionView.backgroundColor = kDarkBackground;
+		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
+	} else  {
+		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
+		[self.view setBackgroundColor: kLightBackground];
+		self.collectionView.backgroundColor = kLightBackground;
+		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
 	}
 }
 
@@ -532,14 +536,16 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         // Number of assets
         UILabel *label = (UILabel *)[footerView viewWithTag:1];
 
+		BOOL useDarkMode = NO;
 		if (@available(iOS 13.0, *)) {
+			useDarkMode = ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark);
+		}
 
-			// Use oposite text color
-			if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) {
-				[label setTextColor:kLightBackground];
-			} else  {
-				[label setTextColor:kDarkBackground];
-			}
+		// Use oposite text color
+		if (useDarkMode == YES) {
+			[label setTextColor:kLightBackground];
+		} else  {
+			[label setTextColor:kDarkBackground];
 		}
         
         NSBundle *bundle = self.imagePickerController.assetBundle;

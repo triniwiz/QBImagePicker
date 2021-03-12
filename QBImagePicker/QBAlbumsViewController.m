@@ -95,7 +95,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 	}
 
 	if (useDarkMode == YES) {
-		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
+		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkDisabledColor} forState:UIControlStateDisabled];
 		[self.view setBackgroundColor: kDarkBackground];
 		[self.tableView setBackgroundColor: kDarkBackground];
 		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];

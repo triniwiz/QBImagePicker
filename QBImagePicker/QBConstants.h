@@ -10,6 +10,7 @@
 #define QBConstants_h
 
 #define kDisabledColor 		[UIColor colorWithRed:(195/255.0) green:(195/255.0) blue:(195/255.0) alpha:1.0]
+#define kDarkDisabledColor 		[UIColor colorWithRed:(82/255.0) green:(83/255.0) blue:(85/255.0) alpha:1.0]
 #define kDarkBackground 	[UIColor colorWithRed:(28/255.0) green:(28/255.0) blue:(30/255.0) alpha:1.0]
 #define kLightBackground 	[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:1.0]
 

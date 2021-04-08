@@ -98,11 +98,13 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkDisabledColor} forState:UIControlStateDisabled];
 		[self.view setBackgroundColor: kDarkBackground];
 		[self.tableView setBackgroundColor: kDarkBackground];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLightBackground} forState:UIControlStateDisabled];
 	} else  {
 		[self.doneButton setTitleTextAttributes:@{NSForegroundColorAttributeName : kDisabledColor} forState:UIControlStateDisabled];
 		[self.view setBackgroundColor: kLightBackground];
 		[self.tableView setBackgroundColor: kLightBackground];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
 		[(UIBarButtonItem *)self.toolbarItems[1] setTitleTextAttributes:@{NSForegroundColorAttributeName : kDarkBackground} forState:UIControlStateDisabled];
 	}
 }
